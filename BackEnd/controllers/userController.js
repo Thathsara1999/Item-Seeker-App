@@ -1,63 +1,69 @@
-const asyncHandler = require('express-async-handler');
+const bcrypt = require('bcryptjs');
 const User = require('../Models/UserModel');
 
-// @desc    Register a new user
-// @route   POST /api/users
-// @access  Public
-const registerUser = asyncHandler(async (req, res) => {
+// Registration route
+const registerUser = async (req, res) => {
   const { username, email, password, confirmPassword } = req.body;
 
   if (password !== confirmPassword) {
-    res.status(400);
-    throw new Error('Passwords do not match');
+    return res.status(400).json({ message: 'Passwords do not match' });
   }
 
-  const userExists = await User.findOne({ email });
+  try {
+    const userExists = await User.findOne({ email });
 
-  if (userExists) {
-    res.status(400);
-    throw new Error('User already exists');
-  }
+    if (userExists) {
+      return res.status(400).json({ message: 'User already exists' });
+    }
 
-  const user = await User.create({
-    username,
-    email,
-    password,
-  });
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
-  if (user) {
-    res.status(201).json({
-      _id: user._id,
-      username: user.username,
-      email: user.email,
+    const user = new User({
+      username,
+      email,
+      password: hashedPassword,
     });
-  } else {
-    res.status(400);
-    throw new Error('Invalid user data');
-  }
-});
 
-// @desc    Authenticate user & get token
-// @route   POST /api/users/login
-// @access  Public
-const authUser = asyncHandler(async (req, res) => {
+    await user.save();
+
+    res.status(201).json({ message: 'User registered successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+// Login route
+const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await User.findOne({ email });
+  try {
+    const user = await User.findOne({ email });
 
-  if (user && (await user.matchPassword(password))) {
-    res.json({
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    res.status(200).json({
       _id: user._id,
       username: user.username,
       email: user.email,
     });
-  } else {
-    res.status(401);
-    throw new Error('Invalid email or password');
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
   }
-});
-
-module.exports = {
-  registerUser,
-  authUser,
 };
+  module.exports = {
+    registerUser,
+    loginUser,
+  };
+//};
+//module.exports = router;
