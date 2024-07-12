@@ -8,7 +8,8 @@ const bcrypt = require('bcryptjs');
 
 const app = express();
 
-const itemRoutes = require('./routes/rout');
+const itemRoutes = require('./routes/ItemRouts');
+const authroutes =require('./routes/authRoutes');
 
 const errorHandler = (err, req, res, next) => {
   console.error(err.stack);
@@ -28,7 +29,7 @@ if (!fs.existsSync(uploadsDir)) {
 
 // Routes
 app.use('/api', itemRoutes); // Using '/api' as a prefix for all routes in itemRoutes
-
+app.use('/api',authroutes);
 app.use(errorHandler);
 
 // MongoDB connection
