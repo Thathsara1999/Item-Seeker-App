@@ -1,0 +1,51 @@
+.show-item{
+    background-color: #cfd2d6;
+  }
+  .item{
+    position: relative;
+    top:px;
+    width: 200px;
+    
+  }
+  .sidebar{
+  position: absolute;
+  top:50px;
+  }
+  table {  
+    
+  
+    border-radius: 5px;
+    margin-left: 20%;
+   
+    background-color:rgb(255, 255, 255); 
+  }
+  
+  
+  td{
+    border: 1px ;
+    padding: 1px;
+    border-radius: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: left;
+   
+  }
+  
+  th {
+    
+    background-color: #1a4079;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+  
+  
+  }
+  
+  img {
+    display: block;
+    margin: auto;
+  }
+  button{
+    width: 100px;
+  }
