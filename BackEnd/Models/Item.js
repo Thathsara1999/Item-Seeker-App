@@ -1,10 +1,19 @@
 const mongoose = require('mongoose');
+
 const ItemSchema = new mongoose.Schema({
+  uniqueId: {
+    type: String,
+    required: true,
+  },
+  category: {
+    type: String,
+    required: true,
+  },
   location: {
     type: String,
     required: true,
   },
-  color: {
+  Found_Date: {
     type: String,
     required: true,
   },
@@ -12,8 +21,8 @@ const ItemSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  image: {
-    type: String,
+  images: {
+    type: [String], // Array of strings to store multiple image paths
     required: false,
   },
 });
