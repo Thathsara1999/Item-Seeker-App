@@ -1,15 +1,212 @@
-form{
-    height: vh;
-    background-color: hwb();
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-input{
-    margin-bottom: 10p;
-    margin-top: 20px;
-}
-button{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 310px;
-}
+
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap:wght@300;700&display=swap');
+
+.reg-background{
+  background-color:rgba(65, 104, 91, 0.884);
+   /* background-image: radial-gradient(at 51% 100%, hsla(139, 28%, 58%, 0.26) 0px, transparent 50%),
+                      radial-gradient(at 53% 0%, hsla(320, 68%, 51%, 0.26) 0px, transparent 50%),
+                      radial-gradient(at 0% 0%, hsla(183,68%,51%,1) 0px, transparent 50%),
+                      radial-gradient(at 100% 100%, hsla(89, 68%, 51%, 0.87) 0px, transparent 50%),
+                      radial-gradient(at 0% 100%, hsla(183,68%,51%,1) 0px, transparent 50%),
+                      radial-gradient(at 100% 0%, hsla(145, 68%, 51%, 0.87) 0px, transparent 50%);*/
+    height: 100vh;
+  }
+
+.reg-textbox {
+  margin-left: 0%;
+  width: 80%;
+  height: 7vh;
+  border: 1px solid #000;
+  border-radius: 5px;
+  box-sizing: border-box;
+  }
+  
+  .reg-form h1 {
+    font-size: 28px;
+  }
+  
+  .reg-signup {
+    width: 80%;
+                        margin-left: 10%;
+                        height: 8vh;
+                        padding: 3% 0;
+                        margin-top: 0vh;
+                        background-color: #454579;
+                        border: none;
+                        border-radius: 5px;
+                        box-shadow: 1px 1px 1px 1px #0f171c;
+                        color: rgb(249, 249, 249);
+                        font-family: sans-serif;
+                        font-weight: lighter;
+                        font-size: 20px;
+                        
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+  }
+  
+  .reg-form {
+    background-color: rgba(255, 255, 255);
+                        height: 90vh;
+                        width: 40%;
+                        position: absolute;
+                        top: 5vh;
+                        left: 30%;
+                        border-radius: 10px;
+                        box-shadow: 2px 2px 1px 2px rgb(7, 7, 7);
+                        align-items: center;
+  }
+  
+  .reg-para {
+    margin-left: 47%;
+    width: 10%;
+    padding-bottom: 2vh;
+    display: inline-block;
+  }
+  
+  .reg-line {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    width: 140px;
+    margin-left: 3%;
+    border-width: 2px;
+  }
+  .reg-label{
+    position:absolute;
+    left: 0;
+    font-family: 'Trebuchet MS', sans-serif;
+    margin-left: 10%;
+    font-weight: lighter;
+    font-size: px;
+  }
+  .login-font{
+    font-family: 'Trebuchet MS', sans-serif;
+    margin-left: 10%;
+    font-weight: lighter;
+    font-size: 14px;
+  }
+  .reg-form h1 {
+    margin-top: 3vh;
+    font-size: 28px;
+    color: rgb(15, 30, 172);
+  }
+  .reg-forgot:any-link {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .login-forgot:hover {
+    color: gray;
+  }
+  /*.reg-background {
+    background-color: rgba(163, 174, 177, 0.884);
+    /*background-image: radial-gradient(at 51% 100%, hsla(139, 28%, 58%, 0.26) 0px, transparent 50%),
+                      radial-gradient(at 53% 0%, hsla(320, 68%, 51%, 0.26) 0px, transparent 50%),
+                      radial-gradient(at 0% 0%, hsla(183,68%,51%,1) 0px, transparent 50%),
+                      radial-gradient(at 100% 100%, hsla(89, 68%, 51%, 0.87) 0px, transparent 50%),
+                      radial-gradient(at 0% 100%, hsla(183,68%,51%,1) 0px, transparent 50%),
+                      radial-gradient(at 100% 0%, hsla(145, 68%, 51%, 0.87) 0px, transparent 50%);*/
+                    /*  height: 100vh;
+                    }
+                    
+                      .reg-form {
+                        background-color: rgba(255, 255, 255);
+                        height: 90vh;
+                        width: 40%;
+                        position: absolute;
+                        top: 5vh;
+                        left: 30%;
+                        border-radius: 10px;
+                        box-shadow: 2px 2px 1px 2px rgb(255, 255, 255);
+                        align-items: center;
+                      }
+                      
+                      .reg-forgot:any-link {
+                        color: black;
+                        text-decoration: none;
+                      }
+                      
+                      .login-forgot:hover {
+                        color: gray;
+                      }
+                      
+                      .login-font {
+                        font-family: 'Trebuchet MS', sans-serif;
+                        margin-left: 10%;
+                        font-weight: lighter;
+                        font-size: 14px;
+                      }
+                      .login-label{
+                        position:absolute;
+                        left: 0;
+                        font-family: 'Trebuchet MS', sans-serif;
+                        margin-left: 10%;
+                        font-weight: lighter;
+                        font-size: px;
+                      }
+                      
+                      .login-form h1 {
+                        
+                    
+                        margin-top: 3vh;
+                        font-size: 28px;
+                    
+                        color: rgb(19, 113, 194);
+                      }
+                      
+                      .login-textbox {
+                        margin-left: 0%;
+                        width: 80%;
+                        height: 7vh;
+                        border: 1px solid #000;
+                        border-radius: 5px;
+                        box-sizing: border-box;
+                      }
+                      
+                      .login-padding {
+                        height: 3vh;
+                      }
+                      
+                      .login-signin {
+                        width: 80%;
+                        margin-left: 10%;
+                        height: 8vh;
+                        padding: 3% 0;
+                        margin-top: 0vh;
+                        background-color: #454579;
+                        border: none;
+                        border-radius: 5px;
+                        box-shadow: 1px 1px 1px 1px #0f171c;
+                        color: rgb(249, 249, 249);
+                        font-family: sans-serif;
+                        font-weight: lighter;
+                        font-size: 20px;
+                        
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        
+                      }
+                      
+                      .login-para {
+                        margin-left: 37%;
+                        width: 80%;
+                        padding-bottom: 2vh;
+                      }
+                      
+                      .login-direct {
+                        width: 120px;
+                        height: 45px;
+                        border-radius: 40px;
+                        border: none;
+                        box-shadow: 2px 2px 15px 2px #ffffff;
+                      }
+                      
+                      .login-direct>img {
+                        width: 30px;
+                      }
+                     
+                      .login-sub{
+                        margin-top: 167px;
+                      }*/
