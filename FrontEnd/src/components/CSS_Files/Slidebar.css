@@ -1,0 +1,38 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5.6rem;
+    height:100vh;
+    width: 200px;
+}
+
+.menu--list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50px;
+}
+
+.menu--list .item {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: 600;
+    padding-left: 10px;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+    color: #28274d;
+
+}
+
+.menu--list .item:hover {
+    background: #324494;
+    color: #dde6ed;
+    width: 200px;
+}
+
+.title {
+    color: #324ed9;
+}
