@@ -1,3 +1,5 @@
+require('dotenv').config(); // Add this line at the top
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -9,7 +11,7 @@ const bcrypt = require('bcryptjs');
 const app = express();
 
 const itemRoutes = require('./routes/ItemRouts');
-const authroutes =require('./routes/authRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 const errorHandler = (err, req, res, next) => {
   console.error(err.stack);
@@ -29,12 +31,11 @@ if (!fs.existsSync(uploadsDir)) {
 
 // Routes
 app.use('/api', itemRoutes); // Using '/api' as a prefix for all routes in itemRoutes
-app.use('/api',authroutes);
+app.use('/api', authRoutes);
 app.use(errorHandler);
 
 // MongoDB connection
-const mongoURI = 'mongodb+srv://nawanka:LYGxfOGL6gADnTbx@nawanka.izovugo.mongodb.net/?retryWrites=true&w=majority&appName=Nawanka';
-mongoose.connect(mongoURI, {
+mongoose.connect(process.env.MONGO, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
