@@ -1,22 +1,27 @@
 const Item = require('../Models/Item');
+const { v4: uuidv4 } = require('uuid'); // Import uuid
 
 // Function to save a new item
 const saveItem = async (req, res) => {
   try {
-    const { location, color, description } = req.body;
+    const { category, location, Found_Date, description } = req.body;
     
-    // Check if req.file exists and save image path
-    let image = null;
-    if (req.file) {
-      image = req.file.path;
+    // Generate uniqueId
+    const uniqueId = uuidv4();
+
+    // Check if req.files exists and save image paths
+    let images = [];
+    if (req.files && req.files.length > 0) {
+      images = req.files.map(file => file.path);
     }
 
     const newItem = new Item({
+      uniqueId,
+      category,
       location,
-      color,
+      Found_Date,
       description,
-      image, // Assign image path here
-      // Add other details if necessary
+      images, // Assign image paths here
     });
 
     await newItem.save();
@@ -43,7 +48,49 @@ const getItems = async (req, res) => {
   }
 };
 
+// Function to delete item
+const deleteItem = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const item = await Item.findOneAndDelete({ _id : id });
+
+    if (!item) {
+      return res.status(404).json({
+        error: "Item not found",
+      });
+    }
+    return res.status(200).json({
+      success: "Item deleted successfully",
+    });
+  } catch (err) {
+    return res.status(400).json({
+      error: err.message,
+    });
+  }
+};
+
+// Function to get item by ID
+const getItemById = async (req, res) => {
+  try {
+    const { id } = req.params; // Corrected to destructure id from req.params
+    const item = await Item.findOne({ _id: id }); // Use findOne with uniqueId
+
+    if (!item) {
+      return res.status(404).json({
+        error: "Item not found",
+      });
+    }
+    return res.status(200).json(item); // Return the found item
+  } catch (err) {
+    return res.status(400).json({
+      error: err.message,
+    });
+  }
+};
+
 module.exports = {
   saveItem,
   getItems,
+  deleteItem,
+  getItemById,
 };
